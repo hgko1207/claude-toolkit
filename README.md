@@ -87,6 +87,23 @@ references/, assets/ 포함한 체계적 구성:
 
 ---
 
+## gstack — 가상 엔지니어링 팀
+
+Garry Tan (Y Combinator CEO)의 워크플로우. Claude Code를 28개 슬래시 명령어로 구성된 팀으로 만든다.
+
+| 역할 | 명령어 |
+|------|--------|
+| 기획/검증 | `/office-hours`, `/autoplan` |
+| 코드 리뷰 | `/review`, `/codex` |
+| QA | `/qa`, `/qa-only`, `/benchmark` |
+| 배포 | `/ship`, `/land-and-deploy`, `/canary` |
+| 보안 | `/cso`, `/careful`, `/guard` |
+| 디자인 | `/design-consultation`, `/design-review` |
+
+→ [gstack/](gstack/) 폴더에서 설치 가이드 + 전체 명령어 상세 가이드 확인
+
+---
+
 ## 꿀팁 모음
 
 Claude Code를 더 잘 쓰기 위한 실전 팁 — 입문부터 고급까지 카테고리별 심층 가이드.
@@ -165,7 +182,19 @@ claude-toolkit/
 │   ├── mcp-guide.md                    # MCP 서버 설정 가이드
 │   ├── workflow-guide.md               # 개발 워크플로우 (Plan, Context, Worktree)
 │   ├── optimization-guide.md           # 모델 선택 + 비용 최적화 + 프롬프트
-│   └── cli-reference.md               # CLI 명령어 + 단축키 레퍼런스
+│   ├── cli-reference.md               # CLI 명령어 + 단축키 레퍼런스
+│   └── templates/
+│       ├── CLAUDE-web.md              # 웹 앱 바이브 코딩 CLAUDE.md 템플릿
+│       ├── CLAUDE-app.md              # 모바일 앱 바이브 코딩 CLAUDE.md 템플릿
+│       └── CLAUDE-vibe.md             # 공통 바이브 코딩 CLAUDE.md 템플릿
+├── gstack/
+│   ├── README.md                      # 전체 명령어 개요
+│   ├── install-guide.md               # 설치 가이드 (Windows 트러블슈팅 포함)
+│   ├── planning-guide.md              # 기획/플래닝 명령어 가이드
+│   ├── development-guide.md           # 개발/디버깅/코드리뷰 가이드
+│   ├── design-guide.md                # 디자인 명령어 가이드
+│   ├── qa-deploy-guide.md             # QA + 배포 워크플로우 가이드
+│   └── workflows.md                   # 실전 워크플로우 조합 패턴
 └── README.md
 ```
 

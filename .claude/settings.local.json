@@ -4,7 +4,8 @@
       "Bash(gh auth:*)",
       "Bash(git branch:*)",
       "Bash(gh repo:*)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "WebSearch"
     ]
   }
 }
