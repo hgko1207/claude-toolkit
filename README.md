@@ -87,6 +87,38 @@ references/, assets/ 포함한 체계적 구성:
 
 ---
 
+## 꿀팁 모음
+
+Claude Code를 더 잘 쓰기 위한 실전 팁 — 입문부터 고급까지 카테고리별 심층 가이드.
+
+### 입문
+
+| 파일 | 내용 |
+|---|---|
+| [claude-code-basics.md](tips/claude-code-basics.md) | 입문~고수 꿀팁 10가지 요약 (CLAUDE.md, MCP, 컨텍스트, 서브 에이전트, Worktree, Hooks) |
+
+### CLAUDE.md 템플릿 (바이브 코딩)
+
+| 파일 | 내용 |
+|---|---|
+| [CLAUDE-web.md](tips/templates/CLAUDE-web.md) | **웹 앱 템플릿** — Next.js + TypeScript + Tailwind + Supabase 바이브 코딩 설정 |
+| [CLAUDE-app.md](tips/templates/CLAUDE-app.md) | **모바일 앱 템플릿** — Expo + React Native + TypeScript 바이브 코딩 설정 |
+| [CLAUDE-vibe.md](tips/templates/CLAUDE-vibe.md) | **공통 바이브 코딩 설정** — 스택 무관 공통 원칙 + Claude에게 원하는 것 |
+
+### 심층 가이드 (카테고리별)
+
+| 파일 | 내용 |
+|---|---|
+| [setup-guide.md](tips/setup-guide.md) | **필수 설정** — CLAUDE.md 작성법, settings.json 완전 가이드, 권한 설정, 보안 설정 |
+| [hooks-guide.md](tips/hooks-guide.md) | **Hooks 완전 가이드** — 모든 훅 이벤트, 실전 레시피 10종 (자동 포맷, 알림, 파일 보호, 컨텍스트 재주입 등) |
+| [skills-subagents-guide.md](tips/skills-subagents-guide.md) | **Skills & Sub-agents** — 스킬 작성법, 프론트매터 전체 옵션, 에이전트 설계 패턴, 멀티 에이전트 파이프라인 |
+| [mcp-guide.md](tips/mcp-guide.md) | **MCP 서버 설정** — 추천 서버 목록, 설정 예시, 권한 제어, 에이전트별 MCP 할당 |
+| [workflow-guide.md](tips/workflow-guide.md) | **개발 워크플로우** — Plan 모드 4단계, 컨텍스트 관리, Git Worktree 병렬 개발, 멀티 에이전트 패턴 |
+| [optimization-guide.md](tips/optimization-guide.md) | **최적화** — 모델 선택 가이드, 비용 절감 전략, 프롬프트 엔지니어링, 흔한 실수 해결법 |
+| [cli-reference.md](tips/cli-reference.md) | **CLI 레퍼런스** — 모든 슬래시 명령어, 키보드 단축키, CLI 플래그, 파일 경로 전체 목록 |
+
+---
+
 ## 파일 구조
 
 ```
@@ -125,6 +157,15 @@ claude-toolkit/
 │       ├── implementer.md              # 코드 구현
 │       ├── reviewer.md                 # 코드 리뷰
 │       └── deployer.md                 # 빌드/배포
+├── tips/
+│   ├── claude-code-basics.md           # 입문~고수 꿀팁 10가지 요약
+│   ├── setup-guide.md                  # 필수 설정 (CLAUDE.md, settings.json, 권한)
+│   ├── hooks-guide.md                  # Hooks 완전 가이드 + 레시피
+│   ├── skills-subagents-guide.md       # Skills & Sub-agents 심층 가이드
+│   ├── mcp-guide.md                    # MCP 서버 설정 가이드
+│   ├── workflow-guide.md               # 개발 워크플로우 (Plan, Context, Worktree)
+│   ├── optimization-guide.md           # 모델 선택 + 비용 최적화 + 프롬프트
+│   └── cli-reference.md               # CLI 명령어 + 단축키 레퍼런스
 └── README.md
 ```
 
