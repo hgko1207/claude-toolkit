@@ -31,6 +31,7 @@ gstack의 대부분 시각적 명령어(`/qa`, `/design-review`, `/canary`, `/be
 ```
 
 Claude가 무엇을 할지 물어봄. 또는 바로 지시:
+
 ```
 /browse http://localhost:3000/login 열고 로그인 폼 테스트해줘
 ```
@@ -138,14 +139,14 @@ Claude가 무엇을 할지 물어봄. 또는 바로 지시:
 
 #### 측정 항목
 
-| 지표 | 설명 |
-|------|------|
-| LCP | Largest Contentful Paint (주요 콘텐츠 로드) |
-| FCP | First Contentful Paint (첫 콘텐츠 표시) |
-| CLS | Cumulative Layout Shift (레이아웃 이동) |
-| TTI | Time to Interactive (인터랙티브 가능 시점) |
-| 번들 크기 | JS/CSS 파일 크기 |
-| 네트워크 요청 수 | 불필요한 요청 감지 |
+| 지표             | 설명                                        |
+| ---------------- | ------------------------------------------- |
+| LCP              | Largest Contentful Paint (주요 콘텐츠 로드) |
+| FCP              | First Contentful Paint (첫 콘텐츠 표시)     |
+| CLS              | Cumulative Layout Shift (레이아웃 이동)     |
+| TTI              | Time to Interactive (인터랙티브 가능 시점)  |
+| 번들 크기        | JS/CSS 파일 크기                            |
+| 네트워크 요청 수 | 불필요한 요청 감지                          |
 
 #### 사용법
 
@@ -165,6 +166,7 @@ Claude가 무엇을 할지 물어봄. 또는 바로 지시:
 ```
 
 배포 플랫폼(Vercel, Netlify, Fly.io, Render, Heroku, GitHub Actions 등)을 자동 감지하고:
+
 - 프로덕션 URL
 - 헬스체크 엔드포인트
 - 배포 상태 확인 명령어
@@ -241,6 +243,7 @@ PR을 만들기 위한 전체 준비를 자동화한다.
 #### 무엇을 하는가
 
 배포 후 **라이브 앱을 지속적으로 모니터링**한다.
+
 - 콘솔 에러 감지
 - 성능 회귀 감지
 - 페이지 실패 감지

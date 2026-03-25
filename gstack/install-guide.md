@@ -9,18 +9,18 @@
 
 [gstack](https://github.com/garrytan/gstack)은 Claude Code를 **가상 엔지니어링 팀**으로 만들어주는 슬래시 커맨드 모음입니다.
 
-| 역할 | 커맨드 |
-|------|--------|
-| 기획/전략 | `/office-hours`, `/plan-ceo-review` |
-| 아키텍처 설계 | `/plan-eng-review` |
-| 디자인 리뷰 | `/plan-design-review`, `/design-review` |
-| 코드 리뷰 | `/review` |
-| QA 테스트 | `/qa`, `/qa-only` |
-| 배포 | `/ship`, `/land-and-deploy` |
-| 보안 감사 | `/cso` |
-| 디버깅 | `/investigate` |
-| 성능 측정 | `/benchmark` |
-| 회고 | `/retro` |
+| 역할          | 커맨드                                  |
+| ------------- | --------------------------------------- |
+| 기획/전략     | `/office-hours`, `/plan-ceo-review`     |
+| 아키텍처 설계 | `/plan-eng-review`                      |
+| 디자인 리뷰   | `/plan-design-review`, `/design-review` |
+| 코드 리뷰     | `/review`                               |
+| QA 테스트     | `/qa`, `/qa-only`                       |
+| 배포          | `/ship`, `/land-and-deploy`             |
+| 보안 감사     | `/cso`                                  |
+| 디버깅        | `/investigate`                          |
+| 성능 측정     | `/benchmark`                            |
+| 회고          | `/retro`                                |
 
 총 28개 스킬이 포함되어 있으며, 헤드리스 브라우저(`/browse`)로 실제 UI를 열어서 QA까지 자동으로 수행합니다.
 
@@ -28,12 +28,12 @@
 
 ## 설치 전 필요한 것
 
-| 도구 | 설명 | 확인 명령 |
-|------|------|-----------|
-| [Claude Code](https://claude.ai/download) | Anthropic 공식 CLI | `claude --version` |
-| [Git](https://git-scm.com/) | 소스 클론 | `git --version` |
-| [Node.js](https://nodejs.org/) | Windows 필수 (Playwright 실행용) | `node --version` |
-| [Bun](https://bun.sh/) | 빌드 도구 (아래 설치법 참고) | `bun --version` |
+| 도구                                      | 설명                             | 확인 명령          |
+| ----------------------------------------- | -------------------------------- | ------------------ |
+| [Claude Code](https://claude.ai/download) | Anthropic 공식 CLI               | `claude --version` |
+| [Git](https://git-scm.com/)               | 소스 클론                        | `git --version`    |
+| [Node.js](https://nodejs.org/)            | Windows 필수 (Playwright 실행용) | `node --version`   |
+| [Bun](https://bun.sh/)                    | 빌드 도구 (아래 설치법 참고)     | `bun --version`    |
 
 ---
 
@@ -181,15 +181,15 @@ Claude Code에서 바로 슬래시 커맨드를 입력하면 됩니다.
 
 ## 정리
 
-| 단계 | 내용 |
-|------|------|
-| 1 | PowerShell에서 Bun 설치 |
-| 2 | `git clone` + `./setup` 으로 전역 설치 |
-| 3 | Windows 버그 패치 (`.exe` 인식 문제) |
-| 4 | 프로젝트 레포에 복사 + `CLAUDE.md` 등록 |
+| 단계 | 내용                                    |
+| ---- | --------------------------------------- |
+| 1    | PowerShell에서 Bun 설치                 |
+| 2    | `git clone` + `./setup` 으로 전역 설치  |
+| 3    | Windows 버그 패치 (`.exe` 인식 문제)    |
+| 4    | 프로젝트 레포에 복사 + `CLAUDE.md` 등록 |
 
 전체 과정을 마치면 Claude Code 어디서든 28개의 gstack 슬래시 커맨드를 바로 쓸 수 있습니다.
 
 ---
 
-*설치 환경: Windows 11, Node.js v24, Bun 1.3.11, Claude Code*
+_설치 환경: Windows 11, Node.js v24, Bun 1.3.11, Claude Code_

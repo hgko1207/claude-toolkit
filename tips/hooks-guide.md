@@ -390,3 +390,74 @@ exit 0
 
 압축/재시작 후 → 중요 정보 자동 재주입
 Claude가 "까먹는" 것 방지.
+
+---
+
+## 고급 레시피 (커뮤니티 발견)
+
+### 테스트 통과 전 세션 종료 불가 (Stop Hook)
+
+Claude가 "완료했습니다" 하고 끝내려는데 테스트가 실패? 이 Hook을 걸면 테스트 통과 전까지 끝낼 수 없다.
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm test 2>&1 || (echo 'Tests are failing. Fix them before stopping.' >&2 && exit 2)"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+exit 2 = Claude에게 "끝내지 마, 이거 먼저 해결해" 신호. 솔로 개발에서 QA 자동화의 핵심.
+
+> 출처: [claudefa.st — Stop Hook 가이드](https://claudefa.st/blog/tools/hooks/stop-hook-task-enforcement)
+
+### 키워드 감지 → 스킬 자동 로드 (UserPromptSubmit Hook)
+
+프롬프트에 특정 키워드가 포함되면 관련 스킬을 자동으로 주입. 매번 `/skill-name` 수동 호출할 필요 없음.
+
+```bash
+# .claude/hooks/auto-skill-loader.sh
+#!/bin/bash
+INPUT=$(cat)
+PROMPT=$(echo "$INPUT" | jq -r '.prompt // empty')
+
+if echo "$PROMPT" | grep -qi "database\|migration\|schema"; then
+  echo "DB 작업 감지됨. DB 가이드 스킬 참고: .claude/skills/db-guide/SKILL.md"
+fi
+
+if echo "$PROMPT" | grep -qi "deploy\|배포\|production"; then
+  echo "배포 작업 감지됨. 배포 가이드 스킬 참고: .claude/skills/deploy-guide/SKILL.md"
+fi
+
+exit 0
+```
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/auto-skill-loader.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+여러 도메인을 넘나드는 풀스택 개발에서 특히 효과적.
+
+> 출처: [claudefa.st — Hooks 완전 가이드](https://claudefa.st/blog/tools/hooks/hooks-guide)

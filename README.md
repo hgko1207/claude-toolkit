@@ -108,7 +108,13 @@ Garry Tan (Y Combinator CEO)의 워크플로우. Claude Code를 28개 슬래시 
 
 Claude Code를 더 잘 쓰기 위한 실전 팁 — 입문부터 고급까지 카테고리별 심층 가이드.
 
-### 입문
+### 입문 & 실전
+
+| 파일 | 내용 |
+|---|---|
+| [pro-tips.md](tips/pro-tips.md) | **고급 꿀팁 15선** — 습관/설정/도구/비용/보안 카테고리별, 초보자도 이해할 수 있게 정리 |
+
+### 기본
 
 | 파일 | 내용 |
 |---|---|
@@ -175,6 +181,7 @@ claude-toolkit/
 │       ├── reviewer.md                 # 코드 리뷰
 │       └── deployer.md                 # 빌드/배포
 ├── tips/
+│   ├── pro-tips.md                    # 고급 꿀팁 15선 (습관/설정/도구/비용/보안)
 │   ├── claude-code-basics.md           # 입문~고수 꿀팁 10가지 요약
 │   ├── setup-guide.md                  # 필수 설정 (CLAUDE.md, settings.json, 권한)
 │   ├── hooks-guide.md                  # Hooks 완전 가이드 + 레시피
@@ -232,5 +239,16 @@ tools: Agent(implementer, reviewer, deployer), Read
 
 ## 참고
 
+### 공식 문서
 - [Claude Code 공식 문서](https://docs.anthropic.com/en/docs/claude-code)
-- 영감: [monet-registry](https://github.com/monet-design/monet-registry), [cc-system](https://github.com/greatSumini/cc-system)
+
+### 추천 레포 & 도구
+- [ykdojo/claude-code-tips](https://github.com/ykdojo/claude-code-tips) — 45개 검증된 Claude Code 팁 모음
+- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — 커뮤니티 큐레이션 리소스 목록
+- [gstack](https://github.com/garrytan/gstack) — Garry Tan의 가상 엔지니어링 팀 스킬 28종
+- [ccusage](https://github.com/ryoppippi/ccusage) — 세션별 토큰 사용량 분석 대시보드
+- [claude-devtools](https://github.com/matt1398/claude-devtools) — 도구 호출 인스펙터 (DevTools 스타일)
+- [ccswarm](https://github.com/nwiizo/ccswarm) — 병렬 Claude 세션 자동화
+
+### 영감
+- [monet-registry](https://github.com/monet-design/monet-registry), [cc-system](https://github.com/greatSumini/cc-system)
