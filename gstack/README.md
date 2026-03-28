@@ -1,7 +1,7 @@
 # gstack — Claude Code 가상 엔지니어링 팀
 
-> Garry Tan (Y Combinator CEO)이 60일 만에 60만 줄 프로덕션 코드를 혼자 작성하며 사용한 워크플로우.
-> Claude Code를 기획자 · 설계자 · 개발자 · QA · 배포 담당으로 구성된 팀으로 만들어준다.
+> Garry Tan (Y Combinator CEO)이 60일 만에 60만 줄 프로덕션 코드를 혼자 작성하며 사용한 워크플로우입니다.
+> Claude Code를 기획자 · 설계자 · 개발자 · QA · 배포 담당으로 구성된 팀으로 만들어줍니다.
 
 ---
 
@@ -45,7 +45,7 @@
 |--------|------|
 | `/browse` | 헤드리스 브라우저 — 스크린샷, 요소 조작, diff |
 | `/qa` | QA 테스트 + 버그 자동 수정 |
-| `/qa-only` | QA 테스트 + 리포트만 (수정 안 함) |
+| `/qa-only` | QA 테스트 + 리포트만 (수정하지 않음) |
 | `/benchmark` | 페이지 로드, Core Web Vitals 성능 측정 |
 | `/setup-browser-cookies` | 로컬 크롬 쿠키 → 헤드리스 세션으로 가져오기 |
 

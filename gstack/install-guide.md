@@ -1,7 +1,7 @@
 # gstack 설치 가이드 (Windows) — Claude Code를 가상 엔지니어링 팀으로 만들기
 
-> Garry Tan (Y Combinator CEO)이 공개한 오픈소스 Claude Code 스킬 모음.
-> 60일 만에 60만 줄 프로덕션 코드를 혼자 작성한 그의 워크플로우를 그대로 쓸 수 있다.
+> Garry Tan (Y Combinator CEO)이 공개한 오픈소스 Claude Code 스킬 모음입니다.
+> 60일 만에 60만 줄 프로덕션 코드를 혼자 작성한 그의 워크플로우를 그대로 쓸 수 있습니다.
 
 ---
 
@@ -114,7 +114,7 @@ if [ "$IS_WINDOWS" -eq 1 ] && [ -f "${BROWSE_BIN}.exe" ]; then
 fi
 ```
 
-수정 후 다시 실행:
+수정 후 다시 실행합니다:
 
 ```bash
 cd ~/.claude/skills/gstack && ./setup
