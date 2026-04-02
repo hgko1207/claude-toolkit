@@ -104,6 +104,22 @@ Garry Tan (Y Combinator CEO)의 워크플로우. Claude Code를 28개 슬래시 
 
 ---
 
+## Impeccable — AI Slop 방지 디자인 스킬
+
+Paul Bakaus의 프론트엔드 디자인 품질 도구. 1개 스킬 + 20개 명령어 + 안티패턴으로 AI가 만든 것 같은 뻔한 UI를 방지한다.
+
+| 역할 | 명령어 |
+|------|--------|
+| 검사/리뷰 | `/audit`, `/critique` |
+| 수정/정리 | `/normalize`, `/polish`, `/distill`, `/clarify` |
+| 디자인 조정 | `/bolder`, `/quieter`, `/colorize`, `/animate`, `/delight` |
+| 구조 | `/extract`, `/adapt`, `/arrange`, `/typeset` |
+| 성능/안정성 | `/optimize`, `/harden`, `/onboard`, `/overdrive` |
+
+→ [impeccable/](impeccable/) 폴더에서 설치 가이드 + 전체 명령어 상세 가이드 확인
+
+---
+
 ## 꿀팁 모음
 
 Claude Code를 더 잘 쓰기 위한 실전 팁 — 입문부터 고급까지 카테고리별 심층 가이드.
@@ -204,6 +220,14 @@ claude-toolkit/
 │   ├── design-guide.md                # 디자인 명령어 가이드
 │   ├── qa-deploy-guide.md             # QA + 배포 워크플로우 가이드
 │   └── workflows.md                   # 실전 워크플로우 조합 패턴
+├── impeccable/
+│   ├── README.md                      # 전체 개요 + 명령어 테이블
+│   ├── install-guide.md               # 설치 가이드 (Claude Code 중심)
+│   ├── commands-guide.md              # 20개 명령어 상세 가이드
+│   ├── design-principles-guide.md     # 디자인 원칙 + AI Slop 안티패턴
+│   ├── workflows.md                   # 실전 워크플로우 + gstack 조합법
+│   ├── usage-guide.md                 # 사용 가이드 (블로그용 완전 가이드)
+│   └── compatibility-guide.md         # 호환성 가이드 (웹/WPF/Flutter + gstack 병행)
 └── README.md
 ```
 
