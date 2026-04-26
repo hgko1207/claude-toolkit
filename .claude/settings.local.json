@@ -5,7 +5,29 @@
       "Bash(git branch:*)",
       "Bash(gh repo:*)",
       "WebFetch(domain:www.youtube.com)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:blog.sshh.io)",
+      "WebFetch(domain:news.ycombinator.com)",
+      "WebFetch(domain:www.builder.io)",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:blog.dailydoseofds.com)",
+      "WebFetch(domain:twitter-thread.com)",
+      "WebFetch(domain:www.sidetool.co)",
+      "WebFetch(domain:www.indiehackers.com)",
+      "WebFetch(domain:blog.gitbutler.com)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:sankalp.bearblog.dev)",
+      "Bash(claude --version)",
+      "Bash(claude update:*)",
+      "Bash(done)",
+      "Bash(git clone:*)",
+      "Read(//c/Users/khkkh/AppData/Local/Temp/impeccable/dist/claude-code/.claude/**)",
+      "Read(//c/Users/khkkh/AppData/Local/Temp/impeccable/**)",
+      "Bash(git status *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
