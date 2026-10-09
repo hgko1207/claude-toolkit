@@ -70,3 +70,7 @@ cp -r .claude/agents/* ~/.claude/agents/
 
 ### 영감
 - [monet-registry](https://github.com/monet-design/monet-registry), [cc-system](https://github.com/greatSumini/cc-system)
+
+## 라이선스
+
+MIT — [LICENSE](LICENSE)
