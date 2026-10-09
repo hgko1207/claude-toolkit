@@ -1,8 +1,6 @@
 # Claude Toolkit
 
-Claude Code를 위한 범용 스킬 + 에이전트 템플릿 모음.
-
-어떤 프로젝트에서든 동일한 에이전트 워크플로우로 개발할 수 있습니다.
+Claude Code용 스킬·에이전트 템플릿과 사용 가이드 모음입니다. 어떤 프로젝트에서든 같은 흐름(계획 → 구현 → 리뷰 → 배포)으로 개발할 수 있게 해 줍니다.
 
 ## 설치
 
@@ -17,45 +15,28 @@ cp -r .claude/agents/* ~/.claude/agents/
 
 설치 후 어떤 프로젝트에서든 바로 사용 가능합니다.
 
----
+## 들어 있는 것
 
-## 구성 요약
+**스킬** — `-pro`는 작성 가이드·예시·템플릿(references/, assets/)이 함께 들어 있는 버전입니다.
 
-### 간편 버전 (Simple)
+| 스킬 | 하는 일 |
+|---|---|
+| `/skill-creator` · `/skill-creator-pro` | 새 스킬 만들기 (pro: 작성 가이드 + 예시 5종 + 템플릿) |
+| `/subagent-creator` · `/subagent-creator-pro` | 새 서브 에이전트 만들기 (pro: 도구 목록 + 예시 6종 + 템플릿) |
+| `/project-init` · `/project-init-pro` | 프로젝트에 CLAUDE.md·plan.md·에이전트·스킬 세팅 |
+| `/crystalize` | 긴 프롬프트를 토큰 적게 압축 |
+| `/write-note` | 유튜브·블로그 소스를 마크다운 노트로 정리 |
 
-SKILL.md 하나로 빠르게 사용:
+**에이전트**
 
-| 스킬 | 호출 | 용도 |
+| 에이전트 | 하는 일 | 모델 |
 |---|---|---|
-| `/skill-creator` | 새 스킬 생성 | SKILL.md 하나 |
-| `/subagent-creator` | 새 서브 에이전트 생성 | SKILL.md 하나 |
-| `/project-init` | 프로젝트 Claude 환경 세팅 | SKILL.md 하나 |
-| `/crystalize` | 프롬프트 토큰 압축 | SKILL.md 하나 |
+| `@planner` | plan.md에 계획 작성 | Opus |
+| `@implementer` | plan.md대로 구현 + 타입체크 | Opus |
+| `@reviewer` | 변경사항 리뷰 (수정은 안 함) | Opus |
+| `@deployer` | 빌드 → 커밋 → 배포 | Opus |
 
-### Pro 버전
-
-references/, assets/ 포함한 체계적 구성:
-
-| 스킬 | 호출 | 포함 내용 |
-|---|---|---|
-| `/skill-creator-pro` | 고급 스킬 생성 | 작성 가이드 + 예시 5종 + 스킬 템플릿 |
-| `/subagent-creator-pro` | 고급 에이전트 생성 | 도구 목록 + 예시 6종 + 에이전트 템플릿 |
-| `/project-init-pro` | 체계적 프로젝트 초기화 | CLAUDE.md 템플릿 + plan.md 템플릿 |
-
-### 범용 에이전트
-
-| 에이전트 | 호출 | 용도 | 모델 |
-|---|---|---|---|
-| **@planner** | `@planner 기능 추가해줘` | plan.md에 플랜 작성 | Opus |
-| **@implementer** | `@implementer 구현해줘` | plan.md 기반 코드 구현 | Opus |
-| **@reviewer** | `@reviewer 리뷰해줘` | 코드 리뷰 (수정 불가) | Opus |
-| **@deployer** | `@deployer 배포해줘` | 빌드 → 커밋 → 배포 | Opus |
-
----
-
-## 워크플로우
-
-### 기본 개발 사이클
+## 쓰는 흐름
 
 ```
 @planner 다크모드 추가해줘     → plan.md에 플랜 작성
@@ -64,209 +45,20 @@ references/, assets/ 포함한 체계적 구성:
 @deployer 배포해줘             → 빌드 → 커밋 → push 배포
 ```
 
-### 새 프로젝트 시작
+새 프로젝트는 `/project-init-pro web`으로 CLAUDE.md·plan.md·에이전트를 한 번에 만든 뒤 바로 `@implementer`로 시작하면 됩니다. 프로젝트 전용 에이전트·에이전트 연계는 [docs/customizing.md](docs/customizing.md)를 보세요.
 
-```
-/project-init-pro web
-  → CLAUDE.md, plan.md, 에이전트, 스킬 일괄 생성
-  → 바로 @implementer로 구현 시작 가능
-```
+## 가이드
 
-### 스킬/에이전트 확장
-
-```
-/skill-creator-pro API 연동 스킬    → references/ 포함한 체계적 스킬 생성
-/subagent-creator-pro 테스터        → 도구/모델 최적화된 에이전트 생성
-```
-
-### 프롬프트 최적화
-
-```
-/crystalize 긴 프롬프트...          → 토큰 50%+ 압축
-```
-
----
-
-## gstack — 가상 엔지니어링 팀
-
-Garry Tan (Y Combinator CEO)의 워크플로우. Claude Code를 28개 슬래시 명령어로 구성된 팀으로 만든다.
-
-| 역할 | 명령어 |
-|------|--------|
-| 기획/검증 | `/office-hours`, `/autoplan` |
-| 코드 리뷰 | `/review`, `/codex` |
-| QA | `/qa`, `/qa-only`, `/benchmark` |
-| 배포 | `/ship`, `/land-and-deploy`, `/canary` |
-| 보안 | `/cso`, `/careful`, `/guard` |
-| 디자인 | `/design-consultation`, `/design-review` |
-
-→ [gstack/](gstack/) 폴더에서 설치 가이드 + 전체 명령어 상세 가이드 확인
-
----
-
-## Impeccable — AI Slop 방지 디자인 스킬
-
-Paul Bakaus의 프론트엔드 디자인 품질 도구. 1개 스킬 + 20개 명령어 + 안티패턴으로 AI가 만든 것 같은 뻔한 UI를 방지한다.
-
-| 역할 | 명령어 |
-|------|--------|
-| 검사/리뷰 | `/audit`, `/critique` |
-| 수정/정리 | `/normalize`, `/polish`, `/distill`, `/clarify` |
-| 디자인 조정 | `/bolder`, `/quieter`, `/colorize`, `/animate`, `/delight` |
-| 구조 | `/extract`, `/adapt`, `/arrange`, `/typeset` |
-| 성능/안정성 | `/optimize`, `/harden`, `/onboard`, `/overdrive` |
-
-→ [impeccable/](impeccable/) 폴더에서 설치 가이드 + 전체 명령어 상세 가이드 확인
-
----
-
-## 꿀팁 모음
-
-Claude Code를 더 잘 쓰기 위한 실전 팁 — 입문부터 고급까지 카테고리별 심층 가이드.
-
-### 입문 & 실전
-
-| 파일 | 내용 |
+| 폴더 | 내용 |
 |---|---|
-| [pro-tips.md](tips/pro-tips.md) | **고급 꿀팁 15선** — 습관/설정/도구/비용/보안 카테고리별, 초보자도 이해할 수 있게 정리 |
-| [design-workflow.md](tips/design-workflow.md) | **AI Slop 극복** — 디자인 스킬 + Gemini 영상 + 템플릿으로 프로급 랜딩 페이지 만들기 |
-
-### 기본
-
-| 파일 | 내용 |
-|---|---|
-| [claude-code-basics.md](tips/claude-code-basics.md) | 입문~고수 꿀팁 10가지 요약 (CLAUDE.md, MCP, 컨텍스트, 서브 에이전트, Worktree, Hooks) |
-
-### CLAUDE.md 템플릿 (바이브 코딩)
-
-| 파일 | 내용 |
-|---|---|
-| [CLAUDE-web.md](tips/templates/CLAUDE-web.md) | **웹 앱 템플릿** — Next.js + TypeScript + Tailwind + Supabase 바이브 코딩 설정 |
-| [CLAUDE-app.md](tips/templates/CLAUDE-app.md) | **모바일 앱 템플릿** — Expo + React Native + TypeScript 바이브 코딩 설정 |
-| [CLAUDE-vibe.md](tips/templates/CLAUDE-vibe.md) | **공통 바이브 코딩 설정** — 스택 무관 공통 원칙 + Claude에게 원하는 것 |
-
-### 심층 가이드 (카테고리별)
-
-| 파일 | 내용 |
-|---|---|
-| [setup-guide.md](tips/setup-guide.md) | **필수 설정** — CLAUDE.md 작성법, settings.json 완전 가이드, 권한 설정, 보안 설정 |
-| [hooks-guide.md](tips/hooks-guide.md) | **Hooks 완전 가이드** — 모든 훅 이벤트, 실전 레시피 10종 (자동 포맷, 알림, 파일 보호, 컨텍스트 재주입 등) |
-| [skills-subagents-guide.md](tips/skills-subagents-guide.md) | **Skills & Sub-agents** — 스킬 작성법, 프론트매터 전체 옵션, 에이전트 설계 패턴, 멀티 에이전트 파이프라인 |
-| [mcp-guide.md](tips/mcp-guide.md) | **MCP 서버 설정** — 추천 서버 목록, 설정 예시, 권한 제어, 에이전트별 MCP 할당 |
-| [workflow-guide.md](tips/workflow-guide.md) | **개발 워크플로우** — Plan 모드 4단계, 컨텍스트 관리, Git Worktree 병렬 개발, 멀티 에이전트 패턴 |
-| [optimization-guide.md](tips/optimization-guide.md) | **최적화** — 모델 선택 가이드, 비용 절감 전략, 프롬프트 엔지니어링, 흔한 실수 해결법 |
-| [cli-reference.md](tips/cli-reference.md) | **CLI 레퍼런스** — 모든 슬래시 명령어, 키보드 단축키, CLI 플래그, 파일 경로 전체 목록 |
-
----
-
-## 파일 구조
-
-```
-claude-toolkit/
-├── .claude/
-│   ├── skills/
-│   │   ├── skill-creator/              # 간편 스킬 생성
-│   │   │   └── SKILL.md
-│   │   ├── skill-creator-pro/          # 고급 스킬 생성
-│   │   │   ├── SKILL.md
-│   │   │   ├── references/
-│   │   │   │   ├── writing-guide.md    # 스킬 작성 가이드
-│   │   │   │   └── examples.md         # 스킬 예시 5종
-│   │   │   └── assets/
-│   │   │       └── skill-template/     # 스킬 폴더 템플릿
-│   │   ├── subagent-creator/           # 간편 에이전트 생성
-│   │   │   └── SKILL.md
-│   │   ├── subagent-creator-pro/       # 고급 에이전트 생성
-│   │   │   ├── SKILL.md
-│   │   │   ├── references/
-│   │   │   │   ├── available-tools.md  # 사용 가능 도구 목록
-│   │   │   │   └── examples.md         # 에이전트 예시 6종
-│   │   │   └── assets/
-│   │   │       └── subagent-template.md
-│   │   ├── project-init/               # 간편 프로젝트 초기화
-│   │   │   └── SKILL.md
-│   │   ├── project-init-pro/           # 체계적 프로젝트 초기화
-│   │   │   ├── SKILL.md
-│   │   │   └── assets/
-│   │   │       ├── CLAUDE-template.md  # CLAUDE.md 템플릿
-│   │   │       └── plan-template.md    # plan.md 템플릿
-│   │   └── crystalize/                 # 프롬프트 압축
-│   │       └── SKILL.md
-│   └── agents/
-│       ├── planner.md                  # 플랜 작성
-│       ├── implementer.md              # 코드 구현
-│       ├── reviewer.md                 # 코드 리뷰
-│       └── deployer.md                 # 빌드/배포
-├── tips/
-│   ├── pro-tips.md                    # 고급 꿀팁 15선 (습관/설정/도구/비용/보안)
-│   ├── design-workflow.md              # AI Slop 극복 디자인 워크플로우
-│   ├── claude-code-basics.md           # 입문~고수 꿀팁 10가지 요약
-│   ├── setup-guide.md                  # 필수 설정 (CLAUDE.md, settings.json, 권한)
-│   ├── hooks-guide.md                  # Hooks 완전 가이드 + 레시피
-│   ├── skills-subagents-guide.md       # Skills & Sub-agents 심층 가이드
-│   ├── mcp-guide.md                    # MCP 서버 설정 가이드
-│   ├── workflow-guide.md               # 개발 워크플로우 (Plan, Context, Worktree)
-│   ├── optimization-guide.md           # 모델 선택 + 비용 최적화 + 프롬프트
-│   ├── cli-reference.md               # CLI 명령어 + 단축키 레퍼런스
-│   └── templates/
-│       ├── CLAUDE-web.md              # 웹 앱 바이브 코딩 CLAUDE.md 템플릿
-│       ├── CLAUDE-app.md              # 모바일 앱 바이브 코딩 CLAUDE.md 템플릿
-│       └── CLAUDE-vibe.md             # 공통 바이브 코딩 CLAUDE.md 템플릿
-├── gstack/
-│   ├── README.md                      # 전체 명령어 개요
-│   ├── install-guide.md               # 설치 가이드 (Windows 트러블슈팅 포함)
-│   ├── planning-guide.md              # 기획/플래닝 명령어 가이드
-│   ├── development-guide.md           # 개발/디버깅/코드리뷰 가이드
-│   ├── design-guide.md                # 디자인 명령어 가이드
-│   ├── qa-deploy-guide.md             # QA + 배포 워크플로우 가이드
-│   └── workflows.md                   # 실전 워크플로우 조합 패턴
-├── impeccable/
-│   ├── README.md                      # 전체 개요 + 명령어 테이블
-│   ├── install-guide.md               # 설치 가이드 (Claude Code 중심)
-│   ├── commands-guide.md              # 20개 명령어 상세 가이드
-│   ├── design-principles-guide.md     # 디자인 원칙 + AI Slop 안티패턴
-│   ├── workflows.md                   # 실전 워크플로우 + gstack 조합법
-│   ├── usage-guide.md                 # 사용 가이드 (블로그용 완전 가이드)
-│   └── compatibility-guide.md         # 호환성 가이드 (웹/WPF/Flutter + gstack 병행)
-└── README.md
-```
-
----
-
-## 커스터마이징
-
-### 프로젝트별 에이전트 추가
-
-프로젝트의 `.claude/agents/`에 프로젝트 전용 에이전트를 추가하면 전역 에이전트보다 우선 적용됩니다.
-
-### 에이전트 연계 (파이프라인)
-
-```yaml
-# coordinator.md
-tools: Agent(implementer, reviewer, deployer), Read
-```
-
-에이전트가 다른 에이전트를 호출하여 구현→리뷰→배포 파이프라인 구성 가능.
-
-### Pro 예시에 포함된 에이전트 종류
-
-| 에이전트 | 용도 | 도구 |
-|---|---|---|
-| code-reviewer | 코드 리뷰 | Read, Grep, Glob, Bash |
-| debugger | 버그 디버깅 | Read, Edit, Bash, Grep, Glob |
-| test-runner | 테스트 실행/수정 | Bash, Read, Edit, Grep, Glob |
-| doc-writer | 기술 문서 작성 | Read, Write, Edit, Glob, Grep |
-| security-auditor | 보안 취약점 감사 | Read, Grep, Glob, Bash |
-| coordinator | 에이전트 연계 파이프라인 | Agent(...), Read, Bash |
-
-`/subagent-creator-pro`로 이 예시들을 참고하여 커스텀 에이전트를 바로 생성할 수 있습니다.
-
----
+| [tips/](tips/) | Claude Code 설정·Hooks·스킬·MCP·워크플로·비용 최적화·CLI 레퍼런스, CLAUDE.md 템플릿 ([목차](tips/README.md)) |
+| [gstack/](gstack/) | Garry Tan의 gstack(Claude Code를 기획·리뷰·QA·배포 팀처럼 쓰는 명령어 세트) 설치·사용 가이드 |
+| [impeccable/](impeccable/) | AI가 만든 티가 나는 UI를 막는 디자인 스킬 Impeccable 설치·명령어 가이드 |
 
 ## 참고
 
 ### 공식 문서
-- [Claude Code 공식 문서](https://docs.anthropic.com/en/docs/claude-code)
+- [Claude Code 공식 문서](https://code.claude.com/docs)
 
 ### 추천 레포 & 도구
 - [ykdojo/claude-code-tips](https://github.com/ykdojo/claude-code-tips) — 45개 검증된 Claude Code 팁 모음
